@@ -1,0 +1,12 @@
+<h1>User Drawings</h1>
+
+  
+  <% @user_drawings.reverse.each do |drawing| %>
+	<p><b>Date:</b> <%= drawing.created_at %></p>
+	<form action="/drawings/<%= drawing.id %>" method="post">
+	  <input type="hidden" name="_method" value="delete">
+	  <input type="submit" value="delete">
+	</form>
+    <a href="/drawings/<%= drawing.id %>"><img class="image_border" src="<%= drawing.image_url %>"></a>
+  <% end %>
+

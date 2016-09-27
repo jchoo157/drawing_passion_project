@@ -1,0 +1,30 @@
+<h1>Drawings</h1>
+
+<% @drawings.reverse.each do |drawing| %>
+  <div class="image_spacing">
+    <p><b>Artist:</b> <%= User.find(drawing.user_id).username %></p>
+    <p><b>Date:</b> <%= drawing.created_at %></p>
+
+    <% if session["user"] && drawing.user_id == session["user"] %>
+      <form action="/drawings/<%= drawing.id %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="delete">
+      </form>
+    <% end %>
+
+  <a class="float_left" href="/drawings/<%= drawing.id %>"><img class="image_border" src="<%= drawing.image_url %>"></a>
+
+
+  <h2> Comments </h2>
+    <% drawing.comments.each do |comment| %>
+      <div class="comment_style">
+        <p><b><%= User.find(comment.user_id).username %>:</b> <%= comment.content %></p>
+      </div>
+    <% end %>
+    <% if session["user"] %>
+      <a href="/comments/<%= drawing.id %>/new">Add Comment</a>
+    <% end %>
+  </div>
+
+<% end %>
+

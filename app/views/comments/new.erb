@@ -1,0 +1,8 @@
+<h1>Comment</h1>
+
+<img class="image_border" src="<%= @drawing.image_url %>">
+
+<form action="/comments/<%= @drawing.id %>" method="post">
+  <textarea name="content" rows="10" cols="50" value="Enter comment"></textarea>
+  <input type="submit" value="submit">
+</form>

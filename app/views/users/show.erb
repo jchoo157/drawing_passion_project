@@ -1,0 +1,12 @@
+<h1>Profile</h1>
+
+<p><b>Username:</b> <%= @user.username %><p>
+<p><b>Email:</b> <%= @user.email %><p>
+<p><b>Drawings:</b> <%= @user.drawings.count %></p>
+
+<a href="/drawings">My Drawings</a>
+
+<form action="/sessions" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" name="logout" value="logout">
+</form>
